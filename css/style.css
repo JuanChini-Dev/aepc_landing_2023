@@ -13,13 +13,13 @@
     font-weight: 700 !important;
 }
 
-.back-to-top {
+/* .back-to-top {
     position: fixed;
     display: none;
     right: 45px;
     bottom: 45px;
     z-index: 99;
-}
+} */
 
 
 /*** Spinner ***/
@@ -151,6 +151,20 @@
         opacity: 1;
     }
 }
+
+.navbar-brand img {
+    height: 75px;
+    width: auto;
+}
+
+@media only screen and (max-width: 576px) {
+    .navbar-brand img{
+        height: 50px;
+        width: auto
+    }
+  
+}
+
 
 
 /*** Header carousel ***/
@@ -411,11 +425,11 @@
     opacity: 0;
   }
   
-  @media (max-width: 576px) {
+  @media only screen and (max-width: 576px) {
     #whatsapp_button {
       right: calc(1.25rem + 1vw);
-      width: 3rem;
-      height: 3rem;
+      width: 3.5rem;
+      height: 3.5rem;
   
     }
   }
