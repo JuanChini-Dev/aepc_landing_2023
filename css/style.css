@@ -1,0 +1,503 @@
+/********** Template CSS **********/
+:root {
+    --primary: #4f8e35;
+    --light: #F0FBFC;
+    --dark: #181d38;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.fw-semi-bold {
+    font-weight: 700 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+    background-color: var(--primary) !important;
+    border: transparent;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    margin-right: 30px;
+    padding: 25px 0;
+    color: #FFFFFF;
+    font-size: 15px;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link  {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar-light .navbar-nav {
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+    height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.navbar-light.sticky-top {
+    top: -100px;
+    transition: .5s;
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        margin-top: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .dropdown-menu.fade-down {
+        top: 100%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        transform: rotateX(0deg);
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+
+/*** Header carousel ***/
+@media (max-width: 768px) {
+    .header-start .item-start {
+        position: relative;
+        min-height: 500px;
+    }
+    
+    .header-start .item-start img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    }
+    .header-start .item-start p {
+        display:none
+    }
+
+}
+
+@media(min-width: 769px) and (max-width: 992px) {
+    .header-start .item-start {
+        /* min-height: 1500px; */
+    }
+}
+
+.header-start .item-start img{
+    /* implement linear-gradient */
+    filter: brightness(50%);
+
+}
+
+
+/*** Section Title ***/
+.section-title {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.section-title::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 80px);
+    height: 3px;
+    background-color: var(--primary);
+    top: 0.4em;
+    left: -40px;
+    z-index: -1;
+  }
+  
+  .section-title::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 120px);
+    height: 3px;
+    background-color: var(--primary);
+    top: 0.7em;
+    left: -60px;
+    z-index: -1;
+  }
+
+.section-title.text-start::before {
+    width: calc(100% + 40px);
+    left: 0;
+    
+}
+
+.section-title.text-start::after {
+    width: calc(100% + 60px);
+    left: 0;
+
+}
+/*** Service ***/
+.service-item {
+    background: #f7f7f7;
+    transition: .5s;
+}
+
+.service-item:hover {
+    margin-top: -10px;
+    background: var(--primary);
+}
+
+.service-item * {
+    transition: .5s;
+}
+
+.service-item:hover * {
+    color: var(--light) !important;
+}
+
+/*** courses ***/
+
+.course-item{
+    background: #f7f7f7;
+    transition: .5s;
+}
+
+.more-information a:hover{
+    /* expandir */
+    transform: scale(1.1);
+}
+
+
+/*** Team ***/
+.team-item{
+    background: #f7f7f7;
+    transition: .5s;
+}
+
+/*** Testimonial ***/
+.testimonial-carousel::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+.testimonial-carousel::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+@media (min-width: 768px) {
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+        width: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+        width: 300px;
+    }
+}
+
+.testimonial-carousel .owl-item .testimonial-text,
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text {
+    background: var(--primary) !important;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    color: #FFFFFF !important;
+}
+
+.testimonial-carousel .owl-dots {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #CCCCCC;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+
+/*** Footer ***/
+
+.footer{
+    background: #f7f7f7;
+}
+
+.footer p{
+    color: #000000;
+}
+
+.footer p i{
+    color: var(--primary);
+}
+
+.footer .btn.btn-social {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-weight: normal;
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+    transform: scale(1.1);
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    border-top: 1px solid rgba(256, 256, 256, .1);
+    color: var(--dark)
+}
+
+#whatsapp_button {
+    position: fixed;
+    z-index: 999;
+    bottom: 3vh;
+    right: calc(2.25rem + 1vw);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight:bold ;
+    background-color: transparent;
+    color: var(--second-color);
+    cursor:pointer;
+    outline: 0;
+    border: 0; 
+    opacity: 0.5;
+  }
+
+  #whatsapp_button img{
+    width: 100%;
+    height: auto
+    
+  }
+  
+  #whatsapp_button:hover {
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    transform: scale3d(1.5, 1.5, 1);
+  
+  }
+  
+  .hidden {
+    visibility : hidden;
+    opacity: 0;
+  }
+  
+  @media (max-width: 576px) {
+    #whatsapp_button {
+      right: calc(1.25rem + 1vw);
+      width: 3rem;
+      height: 3rem;
+  
+    }
+  }
+
+/* course-details */
+.course-container{
+    background: #f7f7f7;
+    border: 0.5px solid #CCCCCC;
+    padding: 2rem
+}
+
+.course-data ul{
+    list-style: none;
+    padding: 0;
+}
+
+.course-data ul li {
+    list-style: none;
+    padding: 5px 0px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #edeff2;
+}
+
+.course-data ul li p {
+    
+    color: var(--dark);
+}
+.course-data ul li span {
+    
+    color: var(--dark);
+}
+
+.accordion-button:not(.collapsed){
+    background: var(--primary);
+    color: var(--light);        
+}
+
+.accordion-button:focus {
+    box-shadow: inherit;
+}
+
+.contact-icon {
+    background: var(--primary);
+}
+
+
+.contact-form-error{
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    font-size: 100%;
+    
+    
+    transition: all 800ms ease;
+    margin-top: 10px;
+  }
+  
+  .contact-form-error.is-active{
+    display:bold;
+    animation: show-message 1s 1 normal 0s ease-in-out
+  }
+
+  .form-floating label  {
+    font-size: 0.8rem;
+  }
+
+  .form-floating > .form-select {
+    font-size: 0.8rem;
+    padding: 1rem .75rem;
+  }
+
+  @media(min-width: 992px) and (max-width: 1200px) {
+    .header-start .item-start h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-start .item-start p {
+        font-size: 1.4rem !important;
+    }
+  }
+
+  
+  
+
+
+
