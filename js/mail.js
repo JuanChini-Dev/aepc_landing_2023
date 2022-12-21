@@ -73,9 +73,9 @@ document.addEventListener("submit", (e) => {
 
       throw new Error("Todos los campos son obligatorios");
     } else {
-      //   fetch('https://formsubmit.co/ajax/1814c8352ba17cd6d358fa7c99ec8f1d', {
+      //
 
-      fetch("https://formsubmit.co/ajax/chini195@gmail.com", {
+      fetch("https://formsubmit.co/ajax/1814c8352ba17cd6d358fa7c99ec8f1d", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
