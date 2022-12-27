@@ -479,8 +479,28 @@
     }
   }
 
-  
-  
+  .wrap .content p {
+    line-height : 2;
+  }
+  .content ul li {
+    list-style: square inside none;
+    padding: 5px 0px;
+    margin-bottom: 5px;
+    list-style-position: outside;
+    line-height: 2;
+  }
+
+  .card-text ul li {
+    list-style: square inside none;
+    list-style-position: outside;
+    line-height: 1.25;
+    padding: 2.5px 0px;
+
+
+    
+  }
+
+
 
 
 
