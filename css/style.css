@@ -245,7 +245,20 @@
 .team-item{
     background: #f7f7f7;
     transition: .5s;
+    
 }
+
+.team-item:hover{
+    margin-top: -10px;
+    
+}
+
+.teacher-img {
+    height: 250px;
+}
+
+
+
 
 /*** Testimonial ***/
 .testimonial-carousel::before {
