@@ -5,7 +5,6 @@
   --dark: #181d38;
 }
 
-
 .fw-medium {
   font-weight: 600 !important;
 }
@@ -72,7 +71,7 @@
 .navbar .dropdown-toggle::after {
   border: none;
   content: "\f107";
-  font-family: sans-serif;
+  font-family: "Font Awesome 5 Free";
   font-weight: 900;
   vertical-align: middle;
   margin-left: 8px;
@@ -116,6 +115,30 @@
 .navbar-light.sticky-top {
   top: -100px;
   transition: 0.5s;
+}
+
+@media (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+  }
+
+  .navbar .dropdown-menu.fade-down {
+    top: 100%;
+    transform: rotateX(-75deg);
+    transform-origin: 0% 0%;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+    top: 100%;
+    transform: rotateX(0deg);
+    visibility: visible;
+    transition: 0.5s;
+    opacity: 1;
+  }
 }
 
 .navbar-brand img {
@@ -490,4 +513,93 @@
   list-style-position: outside;
   line-height: 1.25;
   padding: 2.5px 0px;
+}
+
+/* filter */
+.form-label {
+  font-weight: bold;
+  /* margin-right: 10px; Espacio entre el texto "Filtro" y el input */
+}
+
+#search-input {
+  max-width: 100%; /* Asegura que el input no crezca más del tamaño permitido */
+}
+
+.custom-header {
+  border-bottom: none;
+}
+
+/* Mejoras en los botones */
+.btn-primary {
+  background-color: var(--primary);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-primary:hover {
+  background-color: #3b6d28;
+  transform: scale(1.02);
+}
+
+/* Sección de resumen del pedido */
+.checkout-summary h4,
+.checkout-header h2 {
+  font-size: 1.75rem;
+  color: var(--dark);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+
+.summary-item span {
+  font-weight: 600;
+}
+
+/* Formulario de entrada con validación */
+.form-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(79, 142, 53, 0.3);
+}
+
+input:invalid {
+  border-color: #e74c3c;
+}
+
+input:valid {
+  border-color: #2ecc71;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+  .checkout-content,
+  .checkout-summary {
+    padding: 1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+.form-group .input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Añade espacio entre el input y el botón si es necesario */
+}
+
+@media (max-width: 576px) {
+  /* Ajusta el tamaño si es necesario */
+  .form-group .input-group {
+    flex-direction: column;
+  }
+
+  .form-group .btn {
+    width: 100%;
+    margin-top: 8px; /* Opcional: espacio entre el input y el botón en móvil */
+  }
 }
