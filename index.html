@@ -565,7 +565,7 @@
         // Verificar si el modal ya se mostró en esta sesión
         const modalShown = sessionStorage.getItem("welcomeModalShown");
 
-        if (modalShown) {
+        if (!modalShown) {
           // Si no se ha mostrado, obtener el elemento del modal
           const myModalEl = document.getElementById("welcomeModal");
 
