@@ -77,6 +77,75 @@
       gtag("config", "G-TTNP64DH0T");
   </script>
   <script src="js/include.js"></script>
+
+  <div
+    class="modal fade"
+    id="welcomeModal"
+    tabindex="-1"
+    aria-labelledby="welcomeModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <button
+          type="button"
+          class="btn-close-absolute"
+          data-bs-dismiss="modal"
+          aria-label="Cerrar modal"
+        ></button>
+
+        <div class="modal-body p-0">
+          <div class="row g-0">
+            <div class="col-md-6 p-4 p-md-5">
+              <img
+                src="img/logo.png"
+                alt="Agro Escuela Logo"
+                class="img-fluid mb-4"
+                style="max-width: 200px"
+              />
+
+              <h2 class="promo-titulo mb-3">
+                ¡PROMO EXCLUSIVA<br />PARA LOS 20 PRIMEROS!
+              </h2>
+              <p class="promo-texto">
+                Aprovechá un <strong class="text-success">50% OFF</strong> en la
+                inscripción al Curso de Perito Clasificador de Cereales,
+                Oleaginosas y Legumbres.
+              </p>
+              <p class="promo-texto mb-4">
+                ¡Reservá tu lugar ahora y empezá tu camino en el agro!
+              </p>
+
+              <div
+                class="cupos-resaltado mb-4 p-3 border border-warning rounded text-warning"
+              >
+                <i class="fas fa-clock me-2"></i> Cupos ultra limitados – ¡solo
+                para los primeros 20!
+              </div>
+
+              <a href="https://tu-enlace.com" class="boton pulse">
+                QUIERO MI DESCUENTO <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div
+              class="col-md-6 d-none d-md-block d-flex"
+            >
+              <div class="image-container">
+                <img
+                  src="img/trigo.jpg"
+                  alt="Representación del curso de Perito Clasificador"
+                  class="img-fluid"
+                  style="object-fit: cover; height: 100%" 
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <body>
     <!-- <div data-include="html/navbar.html"></div> -->
     <nav
@@ -257,8 +326,8 @@
               </div>
               <div class="d-flex border-top">
                 <small class="flex-fill text-center border-end py-2"
-                  ><i class="fa fa-user-tie text-primary me-2"></i>Inicio:
-                  Mayo 2025</small
+                  ><i class="fa fa-user-tie text-primary me-2"></i>Inicio: Mayo
+                  2025</small
                 ><small class="flex-fill text-center border-end py-2"
                   ><i class="fa fa-clock text-primary me-2"></i>Distancia</small
                 >
@@ -294,8 +363,7 @@
                   ><i class="fa fa-user-tie text-primary me-2"></i>Inicio: Marzo
                   2025</small
                 ><small class="flex-fill text-center border-end py-2"
-                  ><i class="fa fa-clock text-primary me-2"></i
-                  >Distancia</small
+                  ><i class="fa fa-clock text-primary me-2"></i>Distancia</small
                 >
               </div>
             </div>
@@ -326,16 +394,14 @@
               </div>
               <div class="d-flex border-top">
                 <small class="flex-fill text-center border-end py-2"
-                  ><i class="fa fa-user-tie text-primary me-2"></i>Inicio:
-                  Marzo 2025</small
+                  ><i class="fa fa-user-tie text-primary me-2"></i>Inicio: Marzo
+                  2025</small
                 ><small class="flex-fill text-center border-end py-2"
                   ><i class="fa fa-clock text-primary me-2"></i>Distancia</small
                 >
               </div>
             </div>
           </div>
-       
-          
         </div>
         <div class="text-center mt-5">
           <a href="./courses.html" class="btn btn-primary py-3 px-5 mt-2"
@@ -473,25 +539,47 @@
     <div data-include="html/footer.html"></div>
     <div data-include="html/whatapp.html"></div>
     <script>
-      (function(d,t) {
-        var BASE_URL="https://chatwoot-production-98f8.up.railway.app";
-        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=BASE_URL+"/packs/js/sdk.js";
+      (function (d, t) {
+        var BASE_URL = "https://chatwoot-production-98f8.up.railway.app";
+        var g = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        g.src = BASE_URL + "/packs/js/sdk.js";
         g.defer = true;
         g.async = true;
-        s.parentNode.insertBefore(g,s);
-        g.onload=function(){
+        s.parentNode.insertBefore(g, s);
+        g.onload = function () {
           window.chatwootSDK.run({
-            websiteToken: 'ge2RU3VkzDFUiBHh6AcYK8GS',
-            baseUrl: BASE_URL
-          })
-        }
-      })(document,"script");
+            websiteToken: "ge2RU3VkzDFUiBHh6AcYK8GS",
+            baseUrl: BASE_URL,
+          });
+        };
+      })(document, "script");
     </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Verificar si el modal ya se mostró en esta sesión
+        const modalShown = sessionStorage.getItem("welcomeModalShown");
+
+        if (modalShown) {
+          // Si no se ha mostrado, obtener el elemento del modal
+          const myModalEl = document.getElementById("welcomeModal");
+
+          // Crear una instancia del modal de Bootstrap
+          const myModal = new bootstrap.Modal(myModalEl);
+
+          // Mostrar el modal
+          myModal.show();
+
+          // Marcar en sessionStorage que el modal ya se mostró en esta sesión
+          sessionStorage.setItem("welcomeModalShown", "true");
+        }
+        // Si modalShown existe, no hacemos nada, el modal no se mostrará automáticamente.
+      });
+    </script>
   </body>
 </html>

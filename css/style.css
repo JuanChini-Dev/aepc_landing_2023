@@ -490,3 +490,187 @@
   line-height: 1.25;
   padding: 2.5px 0px;
 }
+
+/* --- Estilos Generales del Modal --- */
+/* Asegura que el modal-content sea el contexto de posicionamiento relativo */
+#welcomeModal .modal-content {
+  position: relative;
+  overflow: hidden; /* Para que la imagen que llena su contenedor no se desborde visualmente */
+}
+
+/* Estilo y posicionamiento del botón de cerrar ABSOLUTO (nuevo botón) */
+#welcomeModal .btn-close-absolute {
+  position: absolute; /* Posiciona el botón de forma absoluta */
+  top: 15px; /* Distancia desde el borde superior del modal-content */
+  right: 15px; /* Distancia desde el borde derecho del modal-content */
+  z-index: 20; /* Asegura que esté por encima de todo lo demás */
+
+  /* Estilos visuales para que sea visible y cliqueable */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.85
+  ); /* Fondo blanco semi-transparente */
+  border-radius: 50%; /* Forma circular */
+  padding: 8px; /* Padding interno */
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+
+  /* Estilo del icono 'x' de Bootstrap */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: 1em 1em;
+  background-position: center;
+  display: inline-block;
+  width: 30px; /* Tamaño del área cliqueable */
+  height: 30px; /* Tamaño del área cliqueable */
+}
+
+#welcomeModal .btn-close-absolute:hover {
+  background-color: rgba(255, 255, 255, 1);
+  opacity: 0.9;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Estilos de la Columna de Contenido --- */
+#welcomeModal .promo-titulo {
+  color: #00a23d; /* Color de marca */
+  font-weight: 800; /* Peso de fuente fuerte */
+  font-size: 36px; /* Tamaño grande en desktop */
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+#welcomeModal .promo-texto {
+  color: #333; /* Gris oscuro suave */
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 15px; /* Ajusta según el HTML, el último párrafo tiene mb-4 */
+}
+
+#welcomeModal .promo-texto strong {
+  color: #00a23d; /* Resalta la oferta con el color de marca */
+  font-weight: bold;
+}
+
+/* Estilo para resaltar la escasez/urgencia */
+#welcomeModal .cupos-resaltado {
+  font-size: 16px;
+  font-weight: bold;
+  color: #c0392b !important; /* Color llamativo para urgencia */
+  background-color: #fefefe; /* Fondo claro */
+  border: 2px solid #e74c3c !important; /* Borde de color de urgencia */
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  /* Opcional: box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
+}
+
+#welcomeModal .cupos-resaltado i {
+  color: #c0392b; /* Asegura que el icono tenga el color de urgencia */
+}
+
+/* --- Estilos del Botón CTA (QUIERO MI DESCUENTO) --- */
+#welcomeModal .boton {
+  display: inline-flex; /* Alinea texto e icono */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center;
+  margin-top: 30px; /* Espacio arriba */
+  padding: 16px 32px; /* Botón más grande */
+  background: #ffc107; /* Color llamativo (amarillo/naranja) */
+  color: #333; /* Texto oscuro */
+  font-weight: bold;
+  font-size: 20px; /* Texto grande en el botón */
+  text-decoration: none;
+  border-radius: 50px; /* Forma de píldora */
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra pronunciada */
+  border: none;
+  cursor: pointer;
+  /* Animación Pulse */
+  animation: pulse 2s infinite;
+}
+
+#welcomeModal .boton i {
+  margin-left: 12px; /* Espacio entre texto e icono */
+  transition: margin-left 0.3s ease;
+}
+
+#welcomeModal .boton:hover {
+  background: #e0a800; /* Tono más oscuro en hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px); /* Efecto levantar */
+}
+
+#welcomeModal .boton:hover i {
+  margin-left: 18px; /* Movimiento del icono */
+}
+
+/* Animación Sutil de Pulso */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+  } /* Color basado en el amarillo del botón */
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 193, 7, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
+}
+
+/* Detener animación en hover/focus */
+#welcomeModal .boton.pulse:hover,
+#welcomeModal .boton.pulse:focus {
+  animation: none;
+}
+
+#welcomeModal .image-container {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+/* --- Ajustes de Responsividad (< 768px) --- */
+@media (max-width: 992px) {
+  /* Tamaño del modal en móviles */
+  #welcomeModal .modal-dialog.modal-lg {
+    max-width: calc(100% - 2rem);
+    margin: 1rem auto;
+  }
+
+  /* Padding de la columna de contenido en móviles */
+  #welcomeModal .col-md-6.p-4.p-md-5 {
+    padding: 20px !important; /* Usamos !important para asegurar que sobrescriba p-4 y p-md-5 */
+  }
+
+  /* Tamaño de fuente del título en móviles */
+  #welcomeModal .promo-titulo {
+    font-size: 28px; /* Título más pequeño en móviles */
+  }
+
+  /* Tamaño del botón en móviles */
+  #welcomeModal .boton {
+    padding: 12px 24px;
+    font-size: 18px;
+    margin-top: 20px; /* Ajuste de margen */
+  }
+  #welcomeModal .boton i {
+    margin-left: 8px;
+  }
+  #welcomeModal .boton:hover i {
+    margin-left: 12px;
+  }
+
+  /* Ajustes para la sección de urgencia en móviles si es necesario */
+  #welcomeModal .cupos-resaltado {
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  /* La columna de la imagen completa se oculta, así que no necesitamos ajustes para la imagen apilada */
+}
