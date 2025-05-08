@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blog - Agro Escuela</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta
+      name="description"
+      content="Últimas noticias y artículos sobre agricultura, agronomía y formación en Agro Escuela Privada Córdoba."
+    />
+    <meta
+      name="keywords"
+      content="blog, noticias, articulos, agricultura, agronomia, formacion, AEPC, Agro Escuela"
+    />
+
+    <link href="./../css//bootstrap.min.css" rel="stylesheet" />
+    <link href="./../css//style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div data-include="/../html/navbar.html"></div>
+
+    <div
+      class="container-fluid py-5"
+      style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1)"
+    >
+      <div class="container py-5">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          <h6 class="section-title bg-white text-center text-primary px-3">
+            AEPC
+          </h6>
+          <h1 class="mb-5">Nuestro Blog</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5">
+      <h2>Últimos Artículos</h2>
+
+      <div id="blog-posts-container" class="row"></div>
+
+      <nav id="pagination-container" aria-label="Paginación de Artículos"></nav>
+    </div>
+
+    <div data-include="../html/footer.html"></div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/include.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Datos de los posts del blog
+        const postsData = [
+          {
+            url: "calidad-del-grano-factores-buenas-practicas-clasificacion.html",
+            img: "../img/blog-calidad-grano.jpg", // Ejemplo: ruta relativa a la raíz del sitio
+            alt: "Imagen representativa sobre la calidad del grano", // Texto alternativo
+            title:
+              "Calidad del grano: factores y buenas prácticas de clasificación",
+            excerpt:
+              "Descubre los factores clave que influyen en la calidad del grano, desde el clima hasta el almacenamiento, y cómo asegurar una clasificación óptima.", // Breve extracto
+            date_upload: "2025-05-10", // Fecha más reciente
+          },
+          {
+            url: "calidad-del-grano-factores-buenas-practicas-clasificacion-1.html",
+            img: "../img/blog-placeholder-1.jpg",
+            alt: "Imagen genérica de agricultura",
+            title:
+              "Calidad del grano: factores y buenas prácticas de clasificación 1",
+            excerpt:
+              "Este es el extracto del segundo artículo. Habla sobre los desafíos en la clasificación de diferentes tipos de granos.",
+            date_upload: "2023-10-01",
+          },
+          {
+            url: "calidad-del-grano-factores-buenas-practicas-clasificacion-2.html",
+            img: "../img/blog-placeholder-2.jpg",
+            alt: "Imagen de una cosecha",
+            title:
+              "Calidad del grano: factores y buenas prácticas de clasificación 2",
+            excerpt:
+              "Exploramos las tecnologías modernas para la medición de la humedad y pureza en los lotes de granos.",
+            date_upload: "2024-10-01", // Fecha intermedia
+          },
+          // *** Añade más artículos aquí para probar la paginación (necesitas más de 10) ***
+          // { url: "articulo-4.html", img: "../img/placeholder-4.jpg", alt: "Alt 4", title: "Otro artículo interesante", excerpt: "Un resumen corto...", date_upload: "2024-11-15" },
+          // { url: "articulo-5.html", img: "../img/placeholder-5.jpg", alt: "Alt 5", title: "El quinto post del blog", excerpt: "Continuando con temas relevantes...", date_upload: "2025-01-20" },
+          // { url: "articulo-6.html", img: "../img/placeholder-6.jpg", alt: "Alt 6", title: "Sexto post", excerpt: "Abordando nuevas técnicas...", date_upload: "2025-02-01" },
+          // { url: "articulo-7.html", img: "../img/placeholder-7.jpg", alt: "Alt 7", title: "Séptimo post", excerpt: "Análisis de mercado...", date_upload: "2025-02-15" },
+          // { url: "articulo-8.html", img: "../img/placeholder-8.jpg", alt: "Alt 8", title: "Octavo post", excerpt: "Innovaciones en el campo...", date_upload: "2025-03-10" },
+          // { url: "articulo-9.html", img: "../img/placeholder-9.jpg", alt: "Alt 9", title: "Noveno post", excerpt: "Casos de éxito...", date_upload: "2025-03-25" },
+          // { url: "articulo-10.html", img: "../img/placeholder-10.jpg", alt: "Alt 10", title: "Décimo post", excerpt: "Preparando la nueva siembra...", date_upload: "2025-04-05" },
+          // { url: "articulo-11.html", img: "../img/placeholder-11.jpg", alt: "Alt 11", title: "El primer post de la segunda página", excerpt: "Este ya estará en la segunda página...", date_upload: "2025-04-20" },
+          // { url: "articulo-12.html", img: "../img/placeholder-12.jpg", alt: "Alt 12", title: "Segundo post de la segunda página", excerpt: "Otro post para la segunda página...", date_upload: "2025-04-25" },
+          // ... y así sucesivamente hasta tener más de 10 posts para ver la paginación
+        ];
+
+        const postsPerPage = 10; // Número de artículos por página
+        let currentPage = 1; // Página actual
+        let sortedPosts = []; // Aquí almacenaremos los posts ordenados
+
+        const postsContainer = document.getElementById("blog-posts-container");
+        const paginationContainer = document.getElementById(
+          "pagination-container"
+        );
+
+        const monthNames = [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Octubre",
+          "Noviembre",
+          "Diciembre",
+        ];
+
+        // Función para formatear la fecha "YYYY-MM-DD" a "DD de NombreMes deYYYY"
+        function formatDate(dateString) {
+          if (!dateString) return "Fecha desconocida";
+          try {
+            const [year, month, day] = dateString.split("-").map(Number);
+            const date = new Date(year, month - 1, day);
+            if (isNaN(date.getTime())) {
+              // Check if date is valid
+              return "Fecha inválida";
+            }
+            const dayOfMonth = date.getDate();
+            const monthName = monthNames[date.getMonth()];
+            const fullYear = date.getFullYear();
+            return `${dayOfMonth} de ${monthName} de ${fullYear}`;
+          } catch (e) {
+            console.error("Error al formatear fecha:", dateString, e);
+            return "Fecha inválida";
+          }
+        }
+
+        // Función para ordenar los posts por fecha (más reciente primero)
+        function sortPostsByDate(posts) {
+          // Crea una copia del array para no modificar el original
+          const postsCopy = [...posts];
+          return postsCopy.sort((a, b) => {
+            // Convertir fechas a objetos Date para una comparación precisa
+            const dateA = new Date(a.date_upload);
+            const dateB = new Date(b.date_upload);
+            // Orden descendente: b - a
+            return dateB - dateA;
+          });
+        }
+
+        // Función para mostrar los posts de la página actual
+        function displayPosts(page) {
+          currentPage = page;
+          postsContainer.innerHTML = ""; // Limpiar el contenedor actual de posts
+
+          const startIndex = (currentPage - 1) * postsPerPage;
+          const endIndex = startIndex + postsPerPage;
+          const postsToDisplay = sortedPosts.slice(startIndex, endIndex);
+
+          if (
+            postsToDisplay.length === 0 &&
+            sortedPosts.length > 0 &&
+            currentPage > 1
+          ) {
+            // Si la página actual queda vacía (ej: al borrar posts o si la URL tenía una página inválida)
+            // ir a la última página válida.
+            const lastPage = Math.ceil(sortedPosts.length / postsPerPage) || 1;
+            displayPosts(lastPage);
+            return; // Detener la ejecución actual
+          } else if (postsToDisplay.length === 0 && sortedPosts.length === 0) {
+            postsContainer.innerHTML =
+              "<div class='col-12'><p>No hay artículos de blog disponibles en este momento.</p></div>";
+            renderPagination(); // Ocultar paginación
+            return; // No hay posts para mostrar
+          }
+
+          // Usar Bootstrap grid (row) para contener las tarjetas (col) - la clase 'row' ya está en el div#blog-posts-container
+          postsToDisplay.forEach((post) => {
+            const colDiv = document.createElement("div");
+            // Definir las clases de columna para responsive: 1 en móviles, 2 en tablets (md), 3 en desktop (lg)
+            // col-12: 1 columna en extra small (<576px) y small (>=576px)
+            // col-md-6: 2 columnas en medium (>=768px)
+            // col-lg-4: 3 columnas en large (>=992px)
+            colDiv.classList.add("col-12", "col-md-6", "col-lg-4"); // mb-4 se añade a la tarjeta, no a la columna
+
+            const cardDiv = document.createElement("div");
+            cardDiv.classList.add("blog-post-card"); // Nuestra clase CSS personalizada
+            cardDiv.classList.add("mb-4"); // Añadir margen inferior a la tarjeta
+
+            // Imagen (placeholder o real si img no está vacío)
+            const img = document.createElement("img");
+            // Usar una imagen placeholder genérica si no hay URL en el JSON o si la URL está vacía
+            const imageUrl =
+              post.img && post.img !== ""
+                ? post.img
+                : "https://via.placeholder.com/400x200?text=Agro+Escuela+Blog";
+            // Ajustar la ruta si la imagen está en /img/ y el archivo html en /blog/
+            img.src = imageUrl.startsWith("img/") ? "../" + imageUrl : imageUrl;
+
+            img.alt =
+              post.alt && post.alt !== ""
+                ? post.alt
+                : `Imagen de ${post.title}`; // Alt text más descriptivo si no se proporciona
+
+            const cardContentDiv = document.createElement("div");
+            cardContentDiv.classList.add("card-content");
+
+            // Contenedor para título, metadatos y extracto (para flexbox interno)
+            const textContentDiv = document.createElement("div");
+            // flex-grow-1 de bootstrap para que este div ocupe el espacio disponible
+            textContentDiv.classList.add("flex-grow-1");
+
+            // Título con enlace
+            const titleH3 = document.createElement("h3");
+            const titleLink = document.createElement("a");
+            // Asegúrate de que la URL del artículo sea relativa a la carpeta blog/
+            titleLink.href = "./" + post.url;
+            titleLink.textContent = post.title;
+            // Las clases de color y decoración se manejan en el CSS .blog-post-card h3 a
+            titleH3.appendChild(titleLink);
+
+            // Metadatos (fecha)
+            const metaP = document.createElement("p");
+            metaP.classList.add("post-meta"); // Nuestra clase CSS para metadatos
+            metaP.textContent = `Publicado el ${formatDate(post.date_upload)}`;
+
+            // Extracto (si existe en el JSON)
+            if (post.excerpt) {
+              const excerptP = document.createElement("p");
+              // Bootstrap class para texto con margen inferior
+              excerptP.classList.add("post-excerpt"); // Nuestra clase CSS para el extracto
+              excerptP.textContent = post.excerpt;
+              textContentDiv.appendChild(excerptP);
+            }
+
+            // Botón Leer más
+            const readMoreLink = document.createElement("a");
+            readMoreLink.href = "./" + post.url; // Enlace al archivo del artículo
+            readMoreLink.classList.add("btn", "btn-outline-primary"); // Clases de estilo de tu plantilla
+
+            // Añadir elementos a la tarjeta
+            textContentDiv.prepend(metaP); // Añadir metadatos antes del título
+            textContentDiv.prepend(titleH3); // Añadir título primero
+
+            cardContentDiv.appendChild(textContentDiv); // Añadir text content div
+            cardContentDiv.appendChild(readMoreLink); // Añadir botón al contenido de la tarjeta
+
+            cardDiv.appendChild(img); // Añadir imagen a la tarjeta
+            cardDiv.appendChild(cardContentDiv); // Añadir contenido a la tarjeta
+
+            colDiv.appendChild(cardDiv); // Añadir la tarjeta a la columna
+            postsContainer.appendChild(colDiv); // Añadir la columna al contenedor principal (row)
+          });
+          // Si no hay posts para la página actual (debería ser manejado antes, pero doble check)
+          if (postsToDisplay.length === 0 && sortedPosts.length > 0) {
+            // Si llegamos aquí, significa que la página está vacía pero hay posts en total.
+            // Esto podría ocurrir con URLs manuales inválidas.
+            postsContainer.innerHTML =
+              "<div class='col-12'><p>Página no encontrada o vacía.</p></div>";
+          }
+        }
+
+        // Función para generar los controles de paginación
+        function renderPagination() {
+          paginationContainer.innerHTML = ""; // Limpiar el contenedor de paginación
+
+          const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
+
+          // No mostrar paginación si hay 10 artículos o menos (o si no hay artículos)
+          if (totalPages <= 1) {
+            return;
+          }
+
+          const nav = document.createElement("nav"); // Usar nav semántico
+          nav.setAttribute("aria-label", "Paginación de Artículos");
+
+          const ul = document.createElement("ul");
+          ul.classList.add("pagination"); // Clase de Bootstrap para paginación
+
+          // Botón "Anterior"
+          const liPrev = document.createElement("li");
+          liPrev.classList.add("page-item");
+          if (currentPage === 1) {
+            liPrev.classList.add("disabled");
+          }
+          const linkPrev = document.createElement("a");
+          linkPrev.classList.add("page-link");
+          linkPrev.href = "#"; // Usamos href="#" y prevenimos el default
+          linkPrev.textContent = "Anterior";
+          liPrev.appendChild(linkPrev);
+          ul.appendChild(liPrev);
+
+          // Enlaces a las páginas
+          // Lógica para mostrar solo un rango de páginas si hay muchas
+          let startPage = Math.max(1, currentPage - 2); // Mostrar 2 páginas antes de la actual
+          let endPage = Math.min(totalPages, currentPage + 2); // Mostrar 2 páginas después de la actual
+
+          // Ajustar si estamos cerca del principio o del final
+          if (endPage - startPage < 4) {
+            // Si hay menos de 5 páginas visibles
+            if (currentPage <= 3) endPage = Math.min(totalPages, 5);
+            else if (currentPage >= totalPages - 2)
+              startPage = Math.max(1, totalPages - 4);
+          }
+
+          // Siempre mostrar la primera página si no está en el rango visible
+          if (startPage > 1) {
+            const li = document.createElement("li");
+            li.classList.add("page-item");
+            const link = document.createElement("a");
+            link.classList.add("page-link");
+            link.href = "#";
+            link.textContent = 1;
+            link.setAttribute("data-page", 1);
+            li.appendChild(link);
+            ul.appendChild(li);
+            if (startPage > 2) {
+              // Añadir puntos suspensivos si hay salto
+              const dotsLi = document.createElement("li");
+              dotsLi.classList.add("page-item", "disabled");
+              const dotsSpan = document.createElement("span");
+              dotsSpan.classList.add("page-link");
+              dotsSpan.textContent = "...";
+              dotsLi.appendChild(dotsSpan);
+              ul.appendChild(dotsLi);
+            }
+          }
+
+          for (let i = startPage; i <= endPage; i++) {
+            const li = document.createElement("li");
+            li.classList.add("page-item");
+            if (i === currentPage) {
+              li.classList.add("active");
+              li.setAttribute("aria-current", "page"); // Atributo para accesibilidad
+            }
+            const link = document.createElement("a");
+            link.classList.add("page-link");
+            link.href = "#"; // Usamos href="#"
+            link.textContent = i;
+            link.setAttribute("data-page", i); // Guardar el número de página
+            li.appendChild(link);
+            ul.appendChild(li);
+          }
+
+          // Siempre mostrar la última página si no está en el rango visible
+          if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+              // Añadir puntos suspensivos si hay salto
+              const dotsLi = document.createElement("li");
+              dotsLi.classList.add("page-item", "disabled");
+              const dotsSpan = document.createElement("span");
+              dotsSpan.classList.add("page-link");
+              dotsSpan.textContent = "...";
+              dotsLi.appendChild(dotsSpan);
+              ul.appendChild(dotsLi);
+            }
+            const li = document.createElement("li");
+            li.classList.add("page-item");
+            const link = document.createElement("a");
+            link.classList.add("page-link");
+            link.href = "#";
+            link.textContent = totalPages;
+            link.setAttribute("data-page", totalPages);
+            li.appendChild(link);
+            ul.appendChild(li);
+          }
+
+          // Botón "Siguiente"
+          const liNext = document.createElement("li");
+          liNext.classList.add("page-item");
+          if (currentPage === totalPages) {
+            liNext.classList.add("disabled");
+          }
+          const linkNext = document.createElement("a");
+          linkNext.classList.add("page-link");
+          linkNext.href = "#"; // Usamos href="#"
+          linkNext.textContent = "Siguiente";
+          liNext.appendChild(linkNext);
+          ul.appendChild(liNext);
+
+          nav.appendChild(ul); // Añadir la lista al elemento nav
+          paginationContainer.appendChild(nav); // Añadir el nav al contenedor de paginación
+
+          // Añadir event listeners a los enlaces de paginación
+          paginationContainer.querySelectorAll(".page-link").forEach((link) => {
+            link.addEventListener("click", function (e) {
+              e.preventDefault(); // Evitar que la página se recargue
+
+              if (this.parentElement.classList.contains("disabled")) {
+                return; // No hacer nada si el enlace está deshabilitado
+              }
+
+              let newPage = currentPage;
+              if (this.textContent === "Anterior") {
+                newPage = currentPage - 1;
+              } else if (this.textContent === "Siguiente") {
+                newPage = currentPage + 1;
+              } else if (this.getAttribute("data-page")) {
+                newPage = parseInt(this.getAttribute("data-page")); // Obtener número de página del atributo data
+              } else if (this.textContent === "1" && startPage > 1) {
+                newPage = 1; // Clic en el enlace de la primera página
+              } else if (
+                this.textContent === totalPages.toString() &&
+                endPage < totalPages
+              ) {
+                newPage = totalPages; // Clic en el enlace de la última página
+              }
+
+              // Validar que la nueva página sea válida
+              if (
+                newPage >= 1 &&
+                newPage <= totalPages &&
+                newPage !== currentPage
+              ) {
+                displayPosts(newPage); // Mostrar los posts de la nueva página
+                renderPagination(); // Volver a renderizar la paginación para actualizar el estado activo/deshabilitado
+                // Opcional: Scroll al inicio de la sección de posts para mejor UX
+                postsContainer.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            });
+          });
+        }
+
+        // --- Lógica de inicialización ---
+
+        // 1. Ordenar los posts al cargar la página
+        sortedPosts = sortPostsByDate([...postsData]); // Usar spread para no modificar el array original
+
+        // 2. Mostrar la primera página de posts
+        displayPosts(currentPage);
+
+        // 3. Renderizar los controles de paginación (si aplica)
+        renderPagination();
+      }); // Fin DOMContentLoaded
+    </script>
+  </body>
+</html>

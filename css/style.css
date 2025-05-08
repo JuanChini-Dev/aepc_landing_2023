@@ -674,3 +674,135 @@
 
   /* La columna de la imagen completa se oculta, así que no necesitamos ajustes para la imagen apilada */
 }
+
+/* ======================================== */
+/* === Estilos Específicos del Blog === */
+/* ======================================== */
+
+/* Estilos para las tarjetas individuales de los posts en la lista */
+.blog-post-card {
+  border: 1px solid #e0e0e0; /* Borde sutil */
+  border-radius: 8px; /* Esquinas redondeadas */
+  overflow: hidden; /* Oculta contenido que se salga del borde */
+  margin-bottom: 30px; /* Espacio entre tarjetas */
+  background-color: #fff; /* Fondo blanco */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave al pasar el ratón */
+  height: 100%; /* Asegura que las tarjetas en una fila tengan la misma altura */
+  display: flex; /* Usa flexbox para controlar el layout interno */
+  flex-direction: column; /* Elementos apilados verticalmente */
+}
+
+.blog-post-card:hover {
+  transform: translateY(-5px); /* Efecto de levitación al pasar el ratón */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+}
+
+.blog-post-card img {
+  width: 100%; /* Imagen ocupa todo el ancho */
+  height: 200px; /* Altura fija para las imágenes (ajustar si es necesario) */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.blog-post-card .card-content {
+  padding: 15px; /* Espacio interno en el contenido de la tarjeta */
+  flex-grow: 1; /* Permite que esta sección ocupe el espacio restante */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye el espacio entre elementos (contenido, meta, botón) */
+}
+
+.blog-post-card h3 {
+  font-size: 1.3rem; /* Tamaño de fuente del título */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.blog-post-card h3 a {
+    /* Usamos color: inherit para que el color del enlace sea el del H3,
+       o puedes definir un color específico aquí.
+       Vamos a usar tu color --dark o un gris oscuro por defecto. */
+    color: var(--dark, #333); /* Usa la variable --dark si existe, si no, un gris oscuro */
+    text-decoration: none; /* Sin subrayado por defecto */
+    transition: color 0.3s ease; /* Transición para el color del enlace */
+}
+ .blog-post-card h3 a:hover {
+    color: var(--primary); /* Usa tu color primario al pasar el ratón */
+    text-decoration: none; /* Asegura que no aparezca subrayado en hover */
+}
+
+
+.blog-post-card .post-meta {
+  font-size: 0.9rem; /* Tamaño de fuente para metadatos (fecha) */
+  color: #777; /* Color gris para la fecha */
+  margin-bottom: 10px;
+}
+
+.blog-post-card .post-excerpt {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px; /* Espacio debajo del extracto */
+    line-height: 1.5;
+}
+
+
+ .blog-post-card .btn {
+     /* Los estilos generales .btn y .btn-outline-primary de tu CSS ya se aplican aquí */
+     align-self: flex-start; /* Alinea el botón a la izquierda dentro del flex container */
+ }
+
+/* Estilos para la paginación */
+.pagination {
+    justify-content: center; /* Centra los controles de paginación */
+    margin-top: 30px;
+}
+ /* Usa las variables de color de tu tema */
+ .page-link {
+     color: var(--primary); /* Color de los enlaces de paginación */
+     /* Opcional: Borde del mismo color para los enlaces inactivos */
+     border-color: #dee2e6; /* Color de borde por defecto de Bootstrap */
+ }
+ .page-item.active .page-link {
+     background-color: var(--primary); /* Fondo del enlace activo */
+     border-color: var(--primary);
+     color: #ffffff; /* Texto blanco para el enlace activo */
+ }
+  .page-link:hover {
+      color: var(--light); /* Texto claro en hover */
+      background-color: var(--primary); /* Fondo primario en hover */
+      border-color: var(--primary);
+  }
+
+ .page-link:focus {
+     box-shadow: 0 0 0 0.25rem rgba(79, 142, 53, 0.25); /* Sombra de foco usando el color primario rgba(var(--primary-rgb), .25) si estuviera definido, si no, el valor hexadecimal */
+ }
+
+ .page-item.disabled .page-link {
+      color: #6c757d; /* Color de texto gris para deshabilitado */
+      pointer-events: none; /* Deshabilita clics */
+      background-color: #fff; /* Fondo blanco */
+      border-color: #dee2e6; /* Borde por defecto */
+ }
+
+
+/* Asegurarse de que el contenedor de posts use el sistema de grid de Bootstrap */
+#blog-posts-container.row {
+    display: flex; /* Ya lo hace Bootstrap .row */
+    flex-wrap: wrap; /* Ya lo hace Bootstrap .row */
+    margin-left: -15px; /* Ya lo hace Bootstrap .row (gutter) */
+    margin-right: -15px; /* Ya lo hace Bootstrap .row (gutter) */
+}
+
+/* Asegurarse de que las columnas tengan el padding del gutter */
+#blog-posts-container .col-12,
+#blog-posts-container .col-md-6,
+#blog-posts-container .col-lg-4 {
+     padding-left: 15px; /* Ya lo hace Bootstrap .col */
+     padding-right: 15px; /* Ya lo hace Bootstrap .col */
+}
+
+
+/* Si tenías estilos generales para p o ul que afectan el contenido del blog,
+   podrías necesitar ajustarlos aquí con selectores más específicos,
+   pero los estilos .blog-post-card .post-excerpt ya ayudan a controlar el extracto.
+*/
