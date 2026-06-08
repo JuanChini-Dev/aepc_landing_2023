@@ -80,7 +80,8 @@
 .navbar-light .navbar-nav .nav-link {
   margin-right: 30px;
   padding: 25px 0;
-  color: #ffffff;
+  color: var(--dark);
+  font-weight: 500;
   font-size: 15px;
   text-transform: uppercase;
   outline: none;
@@ -107,9 +108,15 @@
   height: 75px;
 }
 
-.navbar-light .navbar-nav .nav-link {
-  color: var(--dark);
-  font-weight: 500;
+/* Reserva la altura del navbar mientras el include lo inyecta (evita flash/CLS) */
+.nav-placeholder {
+  min-height: 75px;
+}
+
+@media only screen and (max-width: 576px) {
+  .nav-placeholder {
+    min-height: 50px;
+  }
 }
 
 .navbar-light.sticky-top {
