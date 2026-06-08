@@ -1,0 +1,41 @@
+# robots.txt - Agro Escuela Privada Córdoba
+# https://www.agroescuela-cordoba.edu.ar
+
+User-agent: *
+Allow: /
+Disallow: /cooming-soon.html
+Disallow: /comming-soon-feature.html
+Disallow: /404.html
+
+# Bots de motores generativos (GEO) - permitidos explícitamente
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.agroescuela-cordoba.edu.ar/sitemap.xml
