@@ -408,25 +408,38 @@
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  font-size: 2rem;
-  font-weight: bold;
-  background-color: transparent;
-  color: var(--second-color);
   cursor: pointer;
   outline: 0;
   border: 0;
-  opacity: 0.5;
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out,
+    box-shadow 0.25s ease-out;
+  will-change: transform;
 }
 
 #whatsapp_button img {
+  display: block;
   width: 100%;
   height: auto;
+  border-radius: 50%;
 }
 
-#whatsapp_button:hover {
+#whatsapp_button:hover,
+#whatsapp_button:focus-visible {
   opacity: 1;
-  transition: all 0.3s ease-out;
-  transform: scale3d(1.5, 1.5, 1);
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #whatsapp_button {
+    transition: none;
+  }
+  #whatsapp_button:hover,
+  #whatsapp_button:focus-visible {
+    transform: none;
+  }
 }
 
 .hidden {
