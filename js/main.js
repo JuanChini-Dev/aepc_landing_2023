@@ -3,12 +3,17 @@
 
   new WOW().init();
 
-  // Sticky Navbar
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-      $(".sticky-top").css("top", "0px");
-    } else {
-      $(".sticky-top").css("top", "-100px");
+  // Sticky Navbar (throttled con requestAnimationFrame para evitar reflows en cada evento de scroll)
+  var $stickyTop = $(".sticky-top");
+  var ticking = false;
+  function updateStickyNavbar() {
+    $stickyTop.css("top", window.pageYOffset > 300 ? "0px" : "-100px");
+    ticking = false;
+  }
+  $(window).on("scroll", function () {
+    if (!ticking) {
+      window.requestAnimationFrame(updateStickyNavbar);
+      ticking = true;
     }
   });
 

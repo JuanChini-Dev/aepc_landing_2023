@@ -219,6 +219,38 @@
 .course-item {
   background: #f7f7f7;
   transition: 0.5s;
+  height: 100%; /* llena la columna -> cards de igual alto por fila */
+  display: flex;
+  flex-direction: column;
+}
+
+.course-item:hover {
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Imagen uniforme: recorte a alto fijo para que todas las cards midan igual */
+.course-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Titulo flexible: empuja el pie de todas las cards al fondo, sin desbordes */
+.course-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 90px;
+}
+
+.course-item .border-top {
+  margin-top: auto; /* el pie (inicio/modalidad) siempre al fondo */
+}
+
+/* Evita el borde derecho colgante en la ultima celda del pie */
+.course-item .border-top small:last-child {
+  border-right: 0 !important;
 }
 
 .more-information a:hover {
@@ -237,7 +269,17 @@
 }
 
 .teacher-img {
-  height: 250px;
+  aspect-ratio: 4 / 5; /* retrato consistente para todas */
+  height: auto; /* reemplaza el height:250px fijo */
+  background: #f7f7f7; /* mismo gris que las demás cards */
+}
+
+.teacher-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* recorta sin deformar */
+  object-position: center 20%; /* prioriza la cara al recortar */
+  display: block;
 }
 
 /*** Testimonial ***/

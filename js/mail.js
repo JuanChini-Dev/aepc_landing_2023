@@ -1,6 +1,6 @@
 const $form = document.querySelector(".contact-form");
-const $input = document.querySelectorAll(".form-control" || ".form-select");
-const $button = document.querySelector(".btn");
+const $input = document.querySelectorAll(".form-control, .form-select");
+const $button = $form.querySelector(".btn");
 
 $input.forEach((input) => {
   const $span = document.createElement("span");
@@ -90,7 +90,7 @@ document.addEventListener("submit", (e) => {
           setTimeout(() => {
             Swal.fire(
               "Mensaje Enviado!",
-              "En las proximas horas estaras recibiendo una respuesta a tu consulta",
+              "En las próximas horas estarás recibiendo una respuesta a tu consulta",
               "success"
             );
             $response.classList.add("d-none");
@@ -98,14 +98,14 @@ document.addEventListener("submit", (e) => {
           $form.reset();
         })
         .catch((err) => {
-          console.error(err);
           let message =
-            err.statusText || "Ocurrio un error al enviar el correo";
-          $response.innerHTML = `<p>Error ${err.status}: ${message}</p>`;
+            err.statusText || "Ocurrió un error al enviar el correo";
+          $response.textContent = `Error ${err.status}: ${message}`;
+          $response.classList.remove("d-none");
         })
         .finally(() => {
           $loader.classList.add("d-none");
-          $button.disabled = true;
+          $button.disabled = false;
         });
     }
   } catch (error) {
