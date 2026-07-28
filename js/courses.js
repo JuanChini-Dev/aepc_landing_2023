@@ -4,6 +4,14 @@
 // destacado: false -> aparece sólo en courses.html (catálogo completo)
 const courses = [
   {
+    titulo: "Huella de Carbono",
+    img: "img/course/huella-de-carbono.jpeg",
+    link: "huella-de-carbono.html",
+    inicio: "Agosto 2026",
+    modalidad: "Online",
+    destacado: true,
+  },
+  {
     titulo: "Tecnicatura Superior en Calidad y Comercializacion de Granos",
     img: "img/course/tecnicatura.webp",
     link: "2026-08-tecnicatura-d.html",
