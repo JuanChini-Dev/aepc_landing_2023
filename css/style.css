@@ -737,6 +737,138 @@
   /* La columna de la imagen completa se oculta, así que no necesitamos ajustes para la imagen apilada */
 }
 
+/* --- Bajada y acciones (agregado para la promo de la Jornada) --- */
+#welcomeModal .promo-bajada {
+  color: #555;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+#welcomeModal .promo-acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* CTA secundario: mismo lenguaje que .boton pero sin peso visual.
+   No usamos .btn de Bootstrap porque el tema lo pinta de verde con
+   background-color: var(--primary) !important. */
+#welcomeModal .boton-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#welcomeModal .boton-secundario i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+#welcomeModal .boton-secundario:hover,
+#welcomeModal .boton-secundario:focus-visible {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* El botón de cierre es el primer elemento de la trampa de foco de Bootstrap:
+   necesita un anillo visible. */
+#welcomeModal .btn-close-absolute:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* .boton arrastra su propio margin-top de 30px; dentro del flex con gap sobra. */
+#welcomeModal .promo-acciones .boton {
+  margin-top: 0;
+}
+
+/* --- Bottom sheet en móvil ---
+   Un modal centrado a pantalla completa en celular es el patrón que Google
+   marca como interstitial intrusivo. Abajo de 768px la tarjeta sube desde el
+   borde inferior y deja contenido visible detrás.
+   Nota: el bloque responsive de arriba usa 992px (tablet), este es propio. */
+@media (max-width: 767.98px) {
+  #welcomeModal .modal-dialog {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #welcomeModal .modal-content {
+    border-radius: 16px 16px 0 0;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-top: 10px;
+  }
+
+  /* Barrita de agarre: señal visual de "esto se desliza desde abajo". */
+  #welcomeModal .modal-content::before {
+    content: "";
+    position: sticky;
+    top: 0;
+    display: block;
+    width: 44px;
+    height: 4px;
+    margin: 0 auto 4px;
+    border-radius: 4px;
+    background: #d0d0d0;
+  }
+
+  /* Reemplaza la animación de entrada de Bootstrap por el deslizamiento. */
+  #welcomeModal.fade .modal-dialog {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  #welcomeModal.show .modal-dialog {
+    transform: translateY(0);
+  }
+
+  #welcomeModal .promo-acciones {
+    align-items: stretch;
+  }
+
+  #welcomeModal .promo-acciones .boton,
+  #welcomeModal .boton-secundario {
+    width: 100%;
+  }
+}
+
+/* --- Movimiento reducido ---
+   .boton corre `animation: pulse 2s infinite` sin freno, lo que incumple
+   WCAG 2.2.2. Mismo patrón que el bloque de #whatsapp_button. */
+@media (prefers-reduced-motion: reduce) {
+  #welcomeModal .boton {
+    animation: none;
+    transition: none;
+  }
+
+  #welcomeModal .boton:hover {
+    transform: none;
+  }
+
+  #welcomeModal.fade .modal-dialog,
+  #welcomeModal.show .modal-dialog {
+    transition: none;
+  }
+}
+
 /* ======================================== */
 /* === Estilos Específicos del Blog === */
 /* ======================================== */

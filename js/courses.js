@@ -3,6 +3,16 @@
 // destacado: true  -> aparece en el index ("Próximos cursos")
 // destacado: false -> aparece sólo en courses.html (catálogo completo)
 const courses = [
+  // Evento puntual: pasada la fecha (25/09/2026), cambiar a destacado: false
+  // para que salga del index sin perder la URL ni el SEO.
+  {
+    titulo: "Nos Preparamos para el Trigo",
+    img: "img/course/jornada-trigo-2026-optimized.webp",
+    link: "nos-preparamos-para-el-trigo.html",
+    inicio: "24 de Septiembre",
+    modalidad: "Presencial",
+    destacado: true,
+  },
   {
     titulo: "Huella de Carbono",
     img: "img/course/huella-de-carbono.jpeg",

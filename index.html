@@ -113,79 +113,6 @@
       gtag("config", "G-TTNP64DH0T"));
   </script>
   <script src="js/include.js"></script>
-  <!-- 
-  <div
-    class="modal fade"
-    id="welcomeModal"
-    tabindex="-1"
-    aria-labelledby="welcomeModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <button
-          type="button"
-          class="btn-close-absolute"
-          data-bs-dismiss="modal"
-          aria-label="Cerrar modal"
-        ></button>
-
-        <div class="modal-body p-0">
-          <div class="row g-0">
-            <div class="col-md-6 p-4 p-md-5">
-              <img
-                src="img/logo.png"
-                alt="Agro Escuela Logo"
-                class="img-fluid mb-4"
-                style="max-width: 200px"
-              />
-
-              <h2 class="promo-titulo mb-3">
-                ¡PROMO EXCLUSIVA<br />PARA LOS 20 PRIMEROS!
-              </h2>
-              <p class="promo-texto">
-                Aprovechá un <strong class="text-success">50% OFF</strong> en la
-                inscripción al Curso de Perito Clasificador de Cereales,
-                Oleaginosas y Legumbres.
-              </p>
-              <p class="promo-texto mb-4">
-                ¡Reservá tu lugar ahora y empezá tu camino en el agro!
-              </p>
-
-              <div
-                class="cupos-resaltado mb-4 p-3 border border-warning rounded text-warning"
-              >
-                <i class="fas fa-clock me-2"></i> Cupos ultra limitados – ¡solo
-                para los primeros 20!
-              </div>
-
-              <a
-                href="https://wa.me/+5493518749865?text=Hola%20%21%20Quiero%20el%20cupon%20de%2050%25%20dto%20en%20la%20inscripcion%20del%20Curso%20de%20Perito%20%21
-              "
-                target="_blank"
-                rel="noopener noreferrer"
-                class="boton pulse"
-              >
-                QUIERO MI DESCUENTO <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-
-            <div class="col-md-6 d-none d-md-block d-flex">
-              <div class="image-container">
-                <img
-                  src="img/trigo.jpg"
-                  alt="Representación del curso de Perito Clasificador"
-                  class="img-fluid"
-                  style="object-fit: cover; height: 100%"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <body>
     <div data-include="html/navbar.html" class="nav-placeholder"></div>
 
@@ -378,6 +305,94 @@
         </div>
       </div>
     </div>
+    <!-- Modal promocional: Jornada Nos Preparamos para el Trigo -->
+    <div
+      class="modal fade"
+      id="welcomeModal"
+      tabindex="-1"
+      aria-labelledby="welcomeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <button
+            type="button"
+            class="btn-close-absolute"
+            data-bs-dismiss="modal"
+            aria-label="Cerrar"
+          ></button>
+
+          <div class="modal-body p-0">
+            <div class="row g-0">
+              <div class="col-md-6 p-4 p-md-5">
+                <img
+                  src="img/logo.png"
+                  alt="Agro Escuela Privada Córdoba"
+                  class="img-fluid mb-4"
+                  style="max-width: 200px"
+                />
+
+                <h2 class="promo-titulo mb-2" id="welcomeModalLabel">
+                  NOS PREPARAMOS<br />PARA EL TRIGO
+                </h2>
+
+                <p class="promo-bajada">
+                  Jornada de actualización para peritos · Jueves 24 de
+                  septiembre · Presencial en la sede de la BCCBA
+                </p>
+
+                <p class="promo-texto">
+                  <strong>6 horas</strong> sobre trigo y sorgo: calidad,
+                  análisis físicos VISTEO, almacenamiento y postcosecha,
+                  perspectivas de campaña y las nuevas normativas que impactan
+                  en la actividad.
+                </p>
+
+                <div
+                  class="cupos-resaltado mb-4 p-3 border border-warning rounded text-warning"
+                >
+                  <i class="fas fa-clock me-2"></i> Cupos limitados
+                </div>
+
+                <div class="promo-acciones">
+                  <a
+                    href="nos-preparamos-para-el-trigo.html"
+                    class="boton pulse"
+                    data-promo-cta="programa"
+                  >
+                    VER EL PROGRAMA <i class="fas fa-arrow-right"></i>
+                  </a>
+
+                  <a
+                    href="https://wa.me/+5493518749865?text=Hola,%20estoy%20interesado/a%20en%20la%20Jornada%20Nos%20Preparamos%20para%20el%20Trigo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="boton-secundario"
+                    data-promo-cta="whatsapp"
+                  >
+                    <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-md-6 d-none d-md-block">
+                <div class="image-container">
+                  <img
+                    src="img/course/jornada-trigo-2026-optimized.jpg"
+                    alt="Jornada Nos Preparamos para el Trigo - Agro Escuela y Fundación BCCBA"
+                    class="img-fluid"
+                    style="object-fit: cover; height: 100%"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin modal promocional -->
+
     <div data-include="html/footer.html"></div>
     <div data-include="html/whatapp.html"></div>
 
@@ -388,20 +403,6 @@
     <script src="js/main.js"></script>
     <script src="js/courses.js"></script>
     <script src="js/teachers.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const modalShown = sessionStorage.getItem("welcomeModalShown");
-
-        if (!modalShown) {
-          const myModalEl = document.getElementById("welcomeModal");
-
-          const myModal = new bootstrap.Modal(myModalEl);
-
-          myModal.show();
-
-          sessionStorage.setItem("welcomeModalShown", "true");
-        }
-      });
-    </script>
+    <script src="js/promo-modal.js"></script>
   </body>
 </html>
